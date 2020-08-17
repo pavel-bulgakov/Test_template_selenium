@@ -6,14 +6,16 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+#импортирую все используемые модули
 
 
-class ChromeTest(unittest.TestCase):
+class ChromeTest(unittest.TestCase):  #создаю класс для теста Хрома
 
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome(). #указываю используемый далее драйвер 
 
-    def test_chrome(self):
+    def test_chrome(self):  #создаю тест для хрома внутри класса(обязательно название должно начинаться со слова test и маленькими буквами.
+        #также они будут запускаться в алфавитном порядке,то есть если называть следующий тест,то по алфавиту дальше. 1-9 в селениуме сначала,потом буквы
         driver_chrome = self.driver
         driver_chrome.get("https://qasvus.wordpress.com")
         driver_chrome.maximize_window()
@@ -84,7 +86,8 @@ class ChromeTest(unittest.TestCase):
             "This my first CrossBrowser test")
         driver_chrome.find_element(By.ID, "contact-form-comment-g2-message").submit()
         driver_chrome.implicitly_wait(4)
-        html = driver_chrome.find_element_by_tag_name('html')
+        
+        html = driver_chrome.find_element_by_tag_name('html') #созадаю переменную html которая приравнивается ,странице html как целый элемент
 
         html.send_keys(Keys.PAGE_UP)
         html.send_keys(Keys.PAGE_UP)
@@ -92,8 +95,7 @@ class ChromeTest(unittest.TestCase):
         html.send_keys(Keys.PAGE_UP)
         html.send_keys(Keys.PAGE_UP)
         html.send_keys(Keys.PAGE_UP)
-        # html.send_keys(Keys.PAGE_UP)
-        # html.send_keys(Keys.PAGE_UP)
+        # у меня маленький экран на ноутбуке и для того чтобы элемент был в окошке,надо пролистать его вверх
 
         try:
             wait.until(
@@ -119,7 +121,7 @@ class ChromeTest(unittest.TestCase):
         print("After clicking 'Go back' button we're back to the right page:", driver_chrome.title)
         time.sleep(1)
 
-    def tearDown(self):
+    def tearDown(self):         #обязательно закрыть за собой браузер этим методом,так делается закрытие class через def tearDown(self)
         self.driver.quit()
 
 
@@ -221,5 +223,5 @@ class FireFoxTest(unittest.TestCase):
         print("After clicking 'Go back' button we're back to the right page:", driver_firefox.title)
         time.sleep(1)
 
-    def tearDown(self):
+    def tearDown(self):  #обязательно закрыть за собой браузер этим методом,так делается закрытие class через def tearDown(self)
         self.driver.quit()
