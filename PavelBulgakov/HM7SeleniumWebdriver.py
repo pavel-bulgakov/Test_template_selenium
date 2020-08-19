@@ -77,7 +77,6 @@ class ChromeTest(unittest.TestCase):
         search_email.clear()
         search_message = driver_chrome.find_element_by_xpath("//textarea[@id='contact-form-comment-g2-message']")
         search_message.clear()
-
         driver_chrome.find_element(By.XPATH, "//input[@id='g2-name']").send_keys("Pavel Bulgakov")
         driver_chrome.find_element(By.XPATH, "//input[@id='g2-email']").send_keys("pavelpavelb@gmail.com")
         driver_chrome.find_element(By.XPATH, "//textarea[@id='contact-form-comment-g2-message']").send_keys(
