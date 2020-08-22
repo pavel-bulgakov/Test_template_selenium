@@ -9,3 +9,4 @@ email = "//input[@id='g2-email']"
 message = "//textarea[@id='contact-form-comment-g2-message']"
 submit = "contact-form-comment-g2-message"
 go_back = "//a[contains(text(),'go back')]"
+
